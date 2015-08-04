@@ -10,8 +10,9 @@
 <table class="table table-striped table-bordered table-responsive ">
   <thead>
     <tr>
-      <th>Title</th>
-      <th>Notes</th>
+      <th>Title with tooltip</th>
+      <th >Notes with popover</th>
+      <th >Notes with modal</th>
       <th colspan="3">Actions</th>
     </tr>
   </thead>
@@ -26,16 +27,17 @@
         <%= todo.title %>
       </span>
      </td>
+     
+     <td>
+       <button type="button" class="btn btn-success has-popover" data-toggle="popover" title="<%= todo.title %>" data-content="<%= todo.notes %>">View notes (popover)</button>
+      </td>
 
         <td>
           <% if todo.notes? %>
               <!-- Button trigger modal -->
-               <button type="button" class="btn btn-link has-popover" data-toggle="popover" title="Notes" data-content="<%= todo.notes %>">View notes (popover)</button>
-
-
-            <!--   <button class="btn btn-primary" data-toggle="modal" data-target="#todo-<%= todo.id %>-notes">
-                View notes
-              </button> -->
+              <button class="btn btn-primary" data-toggle="modal" data-target="#todo-<%= todo.id %>-notes">
+                View notes (modal)
+              </button>
 
               <!-- Modal -->
               <div class="modal fade" id="todo-<%= todo.id %>-notes" tabindex="-1" role="dialog" aria-labelledby="todo-<%= todo.id %>-label" aria-hidden="true">

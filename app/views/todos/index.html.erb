@@ -20,13 +20,22 @@
   <tbody>
     <% @todos.each do |todo| %>
       <tr>
-        <td><%= todo.title %></td>
+     <!--    <td><%= todo.title %></td> -->
+      <td>
+       <span class="has-tooltip" data-toggle="tooltip" title="<%= "Created on #{todo.created_at.strftime("%m/%e/%Y at %w:%M %p")}, Last modified on #{todo.updated_at.strftime("%m/%e/%Y at %w:%M %p")}" %>">
+        <%= todo.title %>
+      </span>
+     </td>
+
         <td>
           <% if todo.notes? %>
               <!-- Button trigger modal -->
-              <button class="btn btn-primary" data-toggle="modal" data-target="#todo-<%= todo.id %>-notes">
+               <button type="button" class="btn btn-link has-popover" data-toggle="popover" title="Notes" data-content="<%= todo.notes %>">View notes (popover)</button>
+
+
+            <!--   <button class="btn btn-primary" data-toggle="modal" data-target="#todo-<%= todo.id %>-notes">
                 View notes
-              </button>
+              </button> -->
 
               <!-- Modal -->
               <div class="modal fade" id="todo-<%= todo.id %>-notes" tabindex="-1" role="dialog" aria-labelledby="todo-<%= todo.id %>-label" aria-hidden="true">
